@@ -1,9 +1,9 @@
-# Working on Sheets42
+# Working on Sheets47
 
 ## Scope and branches
 
 - Target standalone DMCP5 `.pg5` programs for DM42n and DM32. C47/R47 are
-  alternative calculator applications, not an API that runs alongside Sheets42.
+  alternative calculator applications, not an API that runs alongside Sheets47.
 - The foundation is on `main`. The user will create `dev`; do not create it or
   begin application implementation as part of the foundation task.
 - Keep the portable spreadsheet backend behind an adapter. Keep DMCP headers,

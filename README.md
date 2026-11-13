@@ -1,4 +1,4 @@
-# Sheets42
+# Sheets47
 
 A standalone spreadsheet application planned for the SwissMicros **DMCP5**
 platform: DM42n and DM32 hardware, including devices used with C47/R47.

@@ -5,11 +5,11 @@ or measured product limits.
 
 ## Platform and application model
 
-Deliver a standalone `SHEETS42.pg5` for DMCP5. DM42n and DM32 are the intended
+Deliver a standalone `SHEETS47.pg5` for DMCP5. DM42n and DM32 are the intended
 hardware targets; C47/R47 describe calculator software and associated key
-layouts. Loading Sheets42 replaces the active calculator program until that
+layouts. Loading Sheets47 replaces the active calculator program until that
 program is loaded again. Do not assume access to C47's engine, registers, fonts,
-or state while Sheets42 is running. Original DM42 `.pgm` support is outside the
+or state while Sheets47 is running. Original DM42 `.pgm` support is outside the
 initial scope.
 
 Use one portable spreadsheet backend behind a small project-owned adapter.
@@ -108,7 +108,7 @@ committing to an expensive function set.
 
 ## Persistence
 
-Plan for a project-specific calculator directory such as `/SHEETS42`, short
+Plan for a project-specific calculator directory such as `/SHEETS47`, short
 filenames, and a versioned workbook format that preserves formulas and formats.
 CSV/TSV are interchange formats, not sufficient native workbook formats.
 

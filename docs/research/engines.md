@@ -61,7 +61,7 @@ The [license](https://github.com/gershnik/spreader/blob/master/LICENSE) is
 BSD-3-Clause. This is a convenient starting point for retaining the project's
 existing original-code license, provided helper licenses and any later copied
 GUI code are also accounted for. Persistence, UI, and calculator lifecycle
-still belong to Sheets42. Do not promise Excel file support from formula support.
+still belong to Sheets47. Do not promise Excel file support from formula support.
 
 ## mtCellEdit
 

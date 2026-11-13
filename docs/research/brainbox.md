@@ -111,7 +111,7 @@ drop-in spreadsheet model.
 
 The `.gitmodules` file names `dmcp`, `dmcp5`, `recorder`, and `emsdk`; all four
 local directories are empty. This extracted archive is not a complete build
-checkout. Do not copy it into Sheets42 and assume it is reproducible. Its root
+checkout. Do not copy it into Sheets47 and assume it is reproducible. Its root
 `LICENSE.txt` is LGPLv3, with additional notices in the tree; inspect exact
 selected-file terms before reuse.
 
@@ -125,7 +125,7 @@ DM42 compatibility is a separate target decision.
 
 Keep this complete release and all recovery images local. They are useful for
 understanding how standalone applications are loaded and normal calculator
-operation is restored, but they are not Sheets42 source dependencies. Do not
+operation is restored, but they are not Sheets47 source dependencies. Do not
 copy installation instructions that format a disk, replace QSPI, or override
 loader warnings into the new application's routine setup.
 

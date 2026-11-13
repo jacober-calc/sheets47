@@ -1,7 +1,7 @@
 # Dependencies and attribution
 
 No dependency source is vendored in the foundation commit. The existing MIT
-license covers original Sheets42 material; it does not relicense references.
+license covers original Sheets47 material; it does not relicense references.
 
 Import the official DMCP5 SDK and the winning spreadsheet engine only when the
 `dev` feasibility work identifies the required versions and source subset.
