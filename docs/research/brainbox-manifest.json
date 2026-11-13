@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-11-12",
+  "resource_root": "/home/jacober/Projects/Brainbox",
+  "purpose": "Local snapshot identification; not authenticated upstream provenance or a claim that every file was reviewed.",
+  "tree_hash_algorithm": "SHA-256 of sorted UTF-8 relative paths, NUL, lowercase content SHA-256 hex, LF, for every regular file except files under .git. Paths are relative to each resource directory.",
+  "directories": [
+    {
+      "path": "DM42-native-programs-main",
+      "file_count": 144,
+      "total_bytes": 831070,
+      "tree_sha256": "0815b104c75805d971cb2d40ee9da219fbe31cf9ce677673dd79517f769c7e58",
+      "selected_file_fingerprints": [
+        {
+          "path": "DM42-native-programs-main/README.md",
+          "bytes": 2670,
+          "sha256": "bffae2216d14f9e16c207171480fdd2e8f9358078b7c5bbc730847a1ee31c350"
+        },
+        {
+          "path": "DM42-native-programs-main/LICENSE",
+          "bytes": 1074,
+          "sha256": "6799d824ba27a53989b700f2edec0c46b24105537e44ea9f88df6536aaf37009"
+        },
+        {
+          "path": "DM42-native-programs-main/Life/README.md",
+          "bytes": 3209,
+          "sha256": "a1c77d4d720493e91698e064bf775f21443044ab36aa6499625d31c43fe5ee44"
+        },
+        {
+          "path": "DM42-native-programs-main/Ackermann/README.md",
+          "bytes": 4038,
+          "sha256": "ba8c1473c915646e9561c975851a6ce1d389652027b5f0ee5fea0d0fc3b36c4c"
+        },
+        {
+          "path": "DM42-native-programs-main/ZMachine/README.md",
+          "bytes": 4911,
+          "sha256": "106fe8eab9e3acbfd37d49c26e3b322d2a0af12d7b812407195b8c3cf8134de8"
+        },
+        {
+          "path": "DM42-native-programs-main/Anim/README.md",
+          "bytes": 3879,
+          "sha256": "9f6ab49af99545949e280ff7bd586d01c8b37abd736c363b1468c5b8c02a844c"
+        },
+        {
+          "path": "DM42-native-programs-main/DiskTest/README.md",
+          "bytes": 1979,
+          "sha256": "cb4ede62e522efc7c9c5be5a6ff3d456c9e3c9468a75f3d7e68dc27a877aa8fe"
+        },
+        {
+          "path": "DM42-native-programs-main/USBTest/README.md",
+          "bytes": 1984,
+          "sha256": "5a9f4fd3dc5b62d391c60e7caf345c8aa19b7478c522a42bd48adc7701a1fa04"
+        }
+      ]
+    },
+    {
+      "path": "DMCP_SDK-master",
+      "file_count": 22,
+      "total_bytes": 87381,
+      "tree_sha256": "1997371c51ca5df166838f0796842f2d70c2b0f503b750022e7d9fe5329be0b4",
+      "selected_file_fingerprints": [
+        {
+          "path": "DMCP_SDK-master/README.md",
+          "bytes": 1708,
+          "sha256": "352ddbbd15d3556e44b2311e31e6d24832cd90bd5fc92459c2a0205cfb2a5e64"
+        },
+        {
+          "path": "DMCP_SDK-master/LICENSE",
+          "bytes": 1980,
+          "sha256": "a9bfd2dd299097bdc50c938739a2071887f60e0dcac2bf29017a1da005644ce9"
+        },
+        {
+          "path": "DMCP_SDK-master/Makefile",
+          "bytes": 4413,
+          "sha256": "33661beae011d8584a272100e458ad57076867156cf689a51bf67bdf50f4b821"
+        },
+        {
+          "path": "DMCP_SDK-master/stm32_program.ld",
+          "bytes": 4794,
+          "sha256": "64e733be9544d536c45afba51b8c332367b4e2d877ab61e2cc539e130702550d"
+        },
+        {
+          "path": "DMCP_SDK-master/dmcp/dmcp.h",
+          "bytes": 26064,
+          "sha256": "1e91a7374bf27e03924f01846cf96ac52fe16469a66e4bc1491323da9a3d9f73"
+        }
+      ]
+    },
+    {
+      "path": "c47-dmcp5-00.109.05.00b2",
+      "file_count": 261,
+      "total_bytes": 4559512,
+      "tree_sha256": "cd8f0c9f25066426d65798893f607b605f09028ba2c58e90c8582c84a3119487",
+      "selected_file_fingerprints": [
+        {
+          "path": "c47-dmcp5-00.109.05.00b2/PACKAGES.txt",
+          "bytes": 5002,
+          "sha256": "58bad372f03dfa98d7dc650d137ba950f750b17292d6e0e3aaf7daf4c667ede6"
+        },
+        {
+          "path": "c47-dmcp5-00.109.05.00b2/install_C47_on_DM42n.txt",
+          "bytes": 2175,
+          "sha256": "8519926143156318f74898f9519ca377e7797287e531c1652d4965452d659341"
+        },
+        {
+          "path": "c47-dmcp5-00.109.05.00b2/C47.pg5",
+          "bytes": 1097044,
+          "sha256": "2dc44552ec55c4fae98e413310c09921e01b4389bd0a1bd203414fd283949aba"
+        },
+        {
+          "path": "c47-dmcp5-00.109.05.00b2/PROGRAMS/README.md",
+          "bytes": 1082,
+          "sha256": "11b1a19d67979fd7318d392f7b340e087295e079743fd6f1d477b69d5621ee77"
+        },
+        {
+          "path": "c47-dmcp5-00.109.05.00b2/PROGRAMS/BUILD.md",
+          "bytes": 1660,
+          "sha256": "6d299d584364b72a8ae551b8cd448aeda5f497d58bfa989473aad99156700088"
+        }
+      ]
+    },
+    {
+      "path": "chess47.pg5-main",
+      "file_count": 95,
+      "total_bytes": 1625985,
+      "tree_sha256": "5548dfbfea1e10fd24b4a119fb935271b32cd44f276f53b1be9e4bb4c3a689f8",
+      "selected_file_fingerprints": [
+        {
+          "path": "chess47.pg5-main/README.md",
+          "bytes": 18395,
+          "sha256": "8335fddb7c39d06d0cdf98c1281bb9df07c2bbeae789f8ec23cf83d236433ee4"
+        },
+        {
+          "path": "chess47.pg5-main/LICENSE",
+          "bytes": 35149,
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "chess47.pg5-main/LICENSE.DMCP5_SDK",
+          "bytes": 1980,
+          "sha256": "a9bfd2dd299097bdc50c938739a2071887f60e0dcac2bf29017a1da005644ce9"
+        },
+        {
+          "path": "chess47.pg5-main/Makefile",
+          "bytes": 5127,
+          "sha256": "c31069331072cf690ee63c3811f11a118cc53cd7227d5edd32218a6170f5d4ad"
+        },
+        {
+          "path": "chess47.pg5-main/stm32_program.ld",
+          "bytes": 5448,
+          "sha256": "b78de35f85dc4381a34fa4963a4e3336c13a1dcf16f7d0a1c6e7c9af1b2f34f0"
+        },
+        {
+          "path": "chess47.pg5-main/dmcp/dmcp.h",
+          "bytes": 25757,
+          "sha256": "f48c4431bfa8280c75c071ecc0a2441a0dd2a4c8d3812b54064162f931bce561"
+        },
+        {
+          "path": "chess47.pg5-main/dmcp/sys/pgm_syscalls.c",
+          "bytes": 4258,
+          "sha256": "e1edead3bd1bb1ad04150581bc41ba7fd205f8ef367f9105d67ec7a74ab2fa7c"
+        },
+        {
+          "path": "chess47.pg5-main/src/main.c",
+          "bytes": 59272,
+          "sha256": "cb7b82b7d21ec8ca67bc349f5ad11356bfd3e91e06fc54adac9dba250013db2e"
+        },
+        {
+          "path": "chess47.pg5-main/src/engine.h",
+          "bytes": 3672,
+          "sha256": "4e5fbe31273d5096c82a09a1bb561810408c3e4fc82d170f86a49ec6ef974d71"
+        },
+        {
+          "path": "chess47.pg5-main/tools/pg5tool.py",
+          "bytes": 1970,
+          "sha256": "2e1fa3af4434aeef2a84fc2885a2e40ad9372b6fb537fa507ab2f3af5e63b213"
+        }
+      ]
+    },
+    {
+      "path": "db48x-0.10.0",
+      "file_count": 1788,
+      "total_bytes": 39269267,
+      "tree_sha256": "51a22a6f26aec566bb98994f618bd9673bf6fcc6d956b17ba5bf18e5c7411512",
+      "selected_file_fingerprints": [
+        {
+          "path": "db48x-0.10.0/README.md",
+          "bytes": 5032,
+          "sha256": "1500475d2971cd09bcdce2e4d6de5ba6868d11133810ddf86560b478b69bcd7b"
+        },
+        {
+          "path": "db48x-0.10.0/LICENSE.txt",
+          "bytes": 7652,
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        },
+        {
+          "path": "db48x-0.10.0/.gitmodules",
+          "bytes": 321,
+          "sha256": "4f0eb4b946ed476da379dbf5f68034f8beab02a74e77d472765fb358816005f8"
+        },
+        {
+          "path": "db48x-0.10.0/Makefile",
+          "bytes": 28711,
+          "sha256": "dd3a364b36656998e07e211e77438db0709ce80a35a0119531e000828698a47d"
+        },
+        {
+          "path": "db48x-0.10.0/src/dmcp/main.cc",
+          "bytes": 24127,
+          "sha256": "9daa74231117faa828e62107d7362df2b575cf898d772422fce63fce8900f39e"
+        },
+        {
+          "path": "db48x-0.10.0/src/dmcp/sysmenu.cc",
+          "bytes": 29220,
+          "sha256": "13c8ea85e2f570378578033e78e9fc74e505ff30c247809f33360e3a6e56ed54"
+        },
+        {
+          "path": "db48x-0.10.0/src/runtime.cc",
+          "bytes": 74694,
+          "sha256": "e1ee1bb34e5b48ca3db376354006167c8600b2ffb21668c0b00030a39da792ac"
+        },
+        {
+          "path": "db48x-0.10.0/AGENTS.md",
+          "bytes": 21497,
+          "sha256": "f154acbe86067d6c1fc2e51297c4fa9f4a41c0727643892a60e12d957adf3902"
+        }
+      ]
+    },
+    {
+      "path": "nav47.pg5-main",
+      "file_count": 117,
+      "total_bytes": 1352237,
+      "tree_sha256": "ef03afe4285f903e5f4e087dba59cebb970ffa155cb479fbba2072596070dec4",
+      "selected_file_fingerprints": [
+        {
+          "path": "nav47.pg5-main/README.md",
+          "bytes": 15480,
+          "sha256": "905b537fa4e2bdbc688df8d4894524e192a7c8d43061463cecffaa0935406919"
+        },
+        {
+          "path": "nav47.pg5-main/LICENSE",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "nav47.pg5-main/LICENSE.DMCP5_SDK",
+          "bytes": 1980,
+          "sha256": "a9bfd2dd299097bdc50c938739a2071887f60e0dcac2bf29017a1da005644ce9"
+        },
+        {
+          "path": "nav47.pg5-main/NOTICE",
+          "bytes": 1401,
+          "sha256": "ee06afb79ca4e70bdd56965e302b60f9ffc0af92bfdbe64af13f75bb582a7f00"
+        },
+        {
+          "path": "nav47.pg5-main/Makefile",
+          "bytes": 6780,
+          "sha256": "e00bacded7edd7a46f53f65ff1e4f7d04e54add3e3257b825f02e214edc69e70"
+        },
+        {
+          "path": "nav47.pg5-main/stm32_program.ld",
+          "bytes": 5448,
+          "sha256": "b78de35f85dc4381a34fa4963a4e3336c13a1dcf16f7d0a1c6e7c9af1b2f34f0"
+        },
+        {
+          "path": "nav47.pg5-main/dmcp/dmcp.h",
+          "bytes": 25754,
+          "sha256": "4792ab4da61b562891f98913ecdb3e1df79d9537561f61aa0e6b661b1a7d13d2"
+        },
+        {
+          "path": "nav47.pg5-main/dmcp/sys/pgm_syscalls.c",
+          "bytes": 4258,
+          "sha256": "e1edead3bd1bb1ad04150581bc41ba7fd205f8ef367f9105d67ec7a74ab2fa7c"
+        },
+        {
+          "path": "nav47.pg5-main/src/main.c",
+          "bytes": 54115,
+          "sha256": "ddbb7b30c583f73cd91c5e191a2d82a266c91769e70b113b2e2d093f3f606fa3"
+        },
+        {
+          "path": "nav47.pg5-main/src/gfx.h",
+          "bytes": 1185,
+          "sha256": "00dc40f25284f41a5df1f62e055b7356513a4a4a8479d670f53f3b3056d5584d"
+        },
+        {
+          "path": "nav47.pg5-main/src/ntext.c",
+          "bytes": 2078,
+          "sha256": "9a5ab12e5f6bf4fd0f4e07e6f209fa06eff808d2a5af3f8a150260702e878994"
+        },
+        {
+          "path": "nav47.pg5-main/src/sercon_ifc.h",
+          "bytes": 3569,
+          "sha256": "34d228b2303062ea9a1c55ffdb5c7195cde2454e5a04b24907266c55faa65ef6"
+        }
+      ]
+    }
+  ],
+  "loose_files": [
+    {
+      "path": "DM42_qspi_3.x.bin",
+      "bytes": 1370864,
+      "sha256": "ac596d9bb54ceaf3ec48ea385d1fc3892de694076df9d29c5a1d1489fde2b597"
+    },
+    {
+      "path": "DMCP5_flash_3.55.bin",
+      "bytes": 364544,
+      "sha256": "f6aa86bef678dc2a10ab90fa0183508beedd628274d1c6b639a37f00ea8c53ce"
+    },
+    {
+      "path": "DMCP5_flash_3.55_DM42-3.26.bin",
+      "bytes": 1486848,
+      "sha256": "a6fff9adb13ebe5321c80df8e2f7501cb69ddb9f2472b5a08d95767a5937ef27"
+    },
+    {
+      "path": "DMCP5_flash_3.56_DM32-2.11.bin",
+      "bytes": 1120256,
+      "sha256": "6346199f1a73c6aa720f5fba1e86184da381bd16fc8e8d03c81c172b6e5ef2b0"
+    },
+    {
+      "path": "keymap_dm32.bin",
+      "bytes": 65,
+      "sha256": "32dbb5a198a43e46c93a07f62d160f54b7ed087738e6c5a685a65d40319ba3a2"
+    }
+  ],
+  "total_file_count": 2432
+}

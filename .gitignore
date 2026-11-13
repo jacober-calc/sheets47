@@ -1,0 +1,28 @@
+# Local resources, experiments, and machine-specific configuration.
+/.local/
+/Brainbox/
+/firmware/
+/config/local.mk
+.env
+.env.*
+!.env.example
+
+# Build output stays in this repository.
+/build/
+/dist/
+/.dep/
+*.o
+*.a
+*.so
+*.elf
+*.map
+*.lst
+*.d
+
+# Host tooling and editors.
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+*~
+*.swp
