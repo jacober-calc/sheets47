@@ -1,5 +1,13 @@
 # Development workflow
 
+## Current stage: version 0.1.0
+
+The user created `dev` and authorized a basic functional application with
+Spreader, the agreed graphical worksheet, `/SHEETS47` persistence, minimal LCD
+refresh, and battery-conscious idle behavior. See [building](building.md),
+[the user guide](user-guide.md), and [validation](validation-0.1.0.md).
+The foundation handoff below records the earlier scope, which is now complete.
+
 ## Foundation handoff
 
 The repository already had commit `e89e3b0` with a short README and MIT license

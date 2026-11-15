@@ -1,20 +1,24 @@
-# Verification plan
+# Verification
 
-There are no application tests to run yet. The first engine feasibility stage
-must exercise real engine behavior on the host, then link the same backend for
-DMCP5. Preserve upstream tests where practical.
+Run `python3 -B tools/build.py host` from the repository root. The build runs
+`host_tests.cpp` against the real Spreader adapter, application, renderer, and
+storage implementation. Version 0.1.0 has 838 checks covering formulas,
+references, copy/fill/row edits, limits, input, viewport drawing, persistence
+corruption and write failure, and recovery after allocation failure. Expected
+numeric results are specified independently of the engine.
 
-- Formulas: literals, strings, arithmetic, ranges, absolute/relative references,
-  dependency chains in both directions, error propagation, circular references.
-- Editing: range copy/move/fill, overlapping moves, row/column insertion and
-  deletion, and the resulting rewritten references.
-- Limits: sparse and dense sheets, long expressions, deep dependencies, memory
-  exhaustion, and a usable workbook after an edit fails.
-- Storage: formula/format round trips, truncated or invalid files, failed writes,
-  recovery, and locale-independent numeric serialization.
-- Platform: viewport clipping, softkeys, alpha input, repeat/cancel, power off,
-  resume, auto-off, USB disk handoff, and DM32 versus DM42n key layouts.
+Allocation sweeps exercise 72 successive C++ allocation points and 92 successive
+C allocation points. The same suite runs with address, undefined-behavior, and
+leak sanitizers using `python3 -B tools/build.py host-sanitize`. Instrumented
+host C++ allocation peaks are partial measurements, not target heap figures.
 
-Report target compiler/flags and peak heap, largest allocation, static RAM,
-stack use, flash size, and battery/USB recalculation time separately. Numerical
-expected results should be independent of the implementation under test.
+`python3 -B tests/host_roundtrip.py` checks save, reopen, edit/recalculate, save,
+and reopen again across three real host processes. Tests retain their output
+under `build/`; no cleanup is performed. The host executable also provides a
+REPL for the optional graphical viewer and reproducible interaction scripts.
+
+See [build instructions](../docs/building.md) and the
+[versioned validation record](../docs/validation-0.1.0.md) for commands and exact
+results. Actual keypad layouts, LCD refresh, power/resume, auto-off, USB handoff,
+total heap/stack use, and battery current still require hardware qualification
+on both DM32 and DM42n. A successful cross-link does not establish these results.

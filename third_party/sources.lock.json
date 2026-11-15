@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "dependencies": [
+    {"name": "spreader", "repository": "gershnik/spreader", "revision": "afa361a6fe862d46b2d536318b1cd44c0d1cdf95", "archive": "spreader-afa361a6.tar.gz", "prefixes": ["lib/code/"], "files": ["LICENSE", "README.md"]},
+    {"name": "sys_string", "repository": "gershnik/sys_string", "revision": "c6f49f190bee6e7ea19cdaf03f8f5769b6d32302", "archive": "sys-string-c6f49f19.tar.gz", "prefixes": ["lib/inc/", "lib/src/"], "files": ["LICENSE", "lib/VERSION"]},
+    {"name": "intrusive_shared_ptr", "repository": "gershnik/intrusive_shared_ptr", "revision": "4aeb70a2f05560338a919e3f2c9a9208274c7a7a", "archive": "isptr-4aeb70a2.tar.gz", "prefixes": ["inc/"], "files": ["LICENSE.txt"]},
+    {"name": "dmcp5", "repository": "swissmicros/DMCP5_SDK", "revision": "71a04c2bb2e694da99e62318c1dc1b2ee5b883b8", "archive": "dmcp5-71a04c2b.tar.gz", "prefixes": ["dmcp/"], "files": ["LICENSE", "stm32_program.ld"]}
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "path": "lib/code/generated/formula-lexer.cpp",
+    "original_sha256": "761a30c1948d111ae907ccc244b6906f540a09545f5df6a2e3d3975c8bdf76ab",
+    "local_sha256": "8f8d4dbaf8594c6614af9e1b3c33f9269971246b47b4853a6a09f4e1e9bb65a0"
+  },
+  {
+    "path": "lib/code/generated/formula-parser.h",
+    "original_sha256": "8f2e47b599cffa9ae81af371d18477feb410cc08daa6380333c22b8698d87402",
+    "local_sha256": "fb18fadcefed6e9d4a8b231c4851e05a7c9988eb4a44eab853df5fc3013a1634"
+  },
+  {
+    "path": "lib/code/inc/spreader/cell-grid.h",
+    "original_sha256": "f87f8caff329f998a6955314bf79984b29297caa45bc6cc3fc2b2709faab0ee8",
+    "local_sha256": "f27f774f07bdd016d1d1ca55be4bf655b30ec6ec7b2fe55f7dae580b52aa7371"
+  },
+  {
+    "path": "lib/code/inc/spreader/cell.h",
+    "original_sha256": "0c48865cd149c73d53918ad4b0dd954f51ed9894840db21b0d71c8440a2e232a",
+    "local_sha256": "64f81964598eb7a9f50066263e955a1b870a83c4097ccbe12b47b401295939df"
+  },
+  {
+    "path": "lib/code/src/cell.cpp",
+    "original_sha256": "8ec22e1ef18ea7a7913f71f3eebb609fbbbf78dc6dbc113878fa597db49683a4",
+    "local_sha256": "b6aaa4ea8710861489100c5f36b35ef1074c4ab252c4e6b4dd095e8960b4be83"
+  },
+  {
+    "path": "lib/code/src/formula.cpp",
+    "original_sha256": "91f0c39c129fabce4bd74f7b0e6d3f0a1e22b6eaf11658f4908502dd46e01a9d",
+    "local_sha256": "4c4ade96bea4c2a7ff4b6f18fff1f73681cf9e48c952c52b22ea42a56137de19"
+  },
+  {
+    "path": "lib/code/src/scalar-date-functions.h",
+    "original_sha256": "d36d546e9a43afe8b00d430e5fef84442e5e8f922fd5c9a14d3dc55420841105",
+    "local_sha256": "82efed4661caad5aab1dc12324aa25ffadc79486c4af720ba2a2dc0734be9fd3"
+  }
+]

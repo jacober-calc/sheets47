@@ -4,6 +4,11 @@ Reviewed 2026-11-12 using primary project sources and a local mtCellEdit archive
 This is a source-level feasibility study; no engine has been compiled, ported,
 benchmarked, or proven to fit DMCP5.
 
+**Implementation update, 14 November 2026:** the user selected Spreader for
+`sheets47` 0.1.0. Its pinned source and integration patches are in
+`third_party/spreader/`. The comparison below remains the historical feasibility
+study; current build and test evidence is in [the validation record](../validation-0.1.0.md).
+
 ## Product requirement: graphical spreadsheet
 
 The required application presents a familiar graphical cell grid on the

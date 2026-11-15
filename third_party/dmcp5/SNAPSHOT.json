@@ -1,0 +1,40 @@
+{
+  "repository": "https://github.com/swissmicros/DMCP5_SDK",
+  "revision": "71a04c2bb2e694da99e62318c1dc1b2ee5b883b8",
+  "archive_url": "https://codeload.github.com/swissmicros/DMCP5_SDK/tar.gz/71a04c2bb2e694da99e62318c1dc1b2ee5b883b8",
+  "archive_sha256": "d8d2c072b310c329e7f9434ba90f1c9a5e8c072adb3f197544bd86855c5061fa",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "a9bfd2dd299097bdc50c938739a2071887f60e0dcac2bf29017a1da005644ce9"
+    },
+    {
+      "path": "dmcp/dmcp.h",
+      "sha256": "2f52a6b0fce308c3a5c9c6119c0359aaa6c28379f19ca50c4ec64de555a6681d"
+    },
+    {
+      "path": "dmcp/ff_ifc.h",
+      "sha256": "6017a233bb4ef48ac504b9df46476c7176313156f06edafb50b3eb61c47cb1d3"
+    },
+    {
+      "path": "dmcp/lft_ifc.h",
+      "sha256": "62aafa8844c6c971aabc4dbe1cf1762a99a401af911cf7bd591abb2f08b04bf6"
+    },
+    {
+      "path": "dmcp/qrcode.h",
+      "sha256": "94eeb6e43e6025b48b242a02ee8f7a145cefa6eedfd429bd69db71e9ee650e74"
+    },
+    {
+      "path": "dmcp/startup_pgm.s",
+      "sha256": "3c0e9d5f1feea59c88bc59330b52a1c41fb749d0dfa34ca0b86c698e09c4296a"
+    },
+    {
+      "path": "dmcp/sys/pgm_syscalls.c",
+      "sha256": "e1edead3bd1bb1ad04150581bc41ba7fd205f8ef367f9105d67ec7a74ab2fa7c"
+    },
+    {
+      "path": "stm32_program.ld",
+      "sha256": "b78de35f85dc4381a34fa4963a4e3336c13a1dcf16f7d0a1c6e7c9af1b2f34f0"
+    }
+  ]
+}

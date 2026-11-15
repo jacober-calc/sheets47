@@ -1,0 +1,392 @@
+{
+  "repository": "https://github.com/gershnik/spreader",
+  "revision": "afa361a6fe862d46b2d536318b1cd44c0d1cdf95",
+  "archive_url": "https://codeload.github.com/gershnik/spreader/tar.gz/afa361a6fe862d46b2d536318b1cd44c0d1cdf95",
+  "archive_sha256": "afa5f99bc190d056e7525a6ce210f35415e38be8363c4c7db3d8581ed2a24f76",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "fdf816d05388bfd05229101fa3a8c67aaab357f9fcb2cbb832c8fb314667c865"
+    },
+    {
+      "path": "README.md",
+      "sha256": "fc3b0e2a565db576b72dff1349ee4beb0ff952f89e34677b12cac04d7468ca7f"
+    },
+    {
+      "path": "lib/code/CMakeLists.txt",
+      "sha256": "dc12a3784ffb26b26c5f3656216e3859a3d8c2431e02cd7b9e231d9bf6c843a5"
+    },
+    {
+      "path": "lib/code/generated/formula-lexer.cpp",
+      "sha256": "761a30c1948d111ae907ccc244b6906f540a09545f5df6a2e3d3975c8bdf76ab"
+    },
+    {
+      "path": "lib/code/generated/formula-lexer.h",
+      "sha256": "92791031d428b3d255dc720e21ac6da73aaa3b4029c272d94f42c3b8a9675e62"
+    },
+    {
+      "path": "lib/code/generated/formula-parser.cpp",
+      "sha256": "34b91710a12624b62ceec64ed84e698ae1f3d4847fc41e25fd93928db430825b"
+    },
+    {
+      "path": "lib/code/generated/formula-parser.h",
+      "sha256": "8f2e47b599cffa9ae81af371d18477feb410cc08daa6380333c22b8698d87402"
+    },
+    {
+      "path": "lib/code/inc/spreader/array.h",
+      "sha256": "fdd2819fefb7a60aa2f416cab2d06363c0ee3a107587ea5abab05248c753738a"
+    },
+    {
+      "path": "lib/code/inc/spreader/ast-node.h",
+      "sha256": "3a9975447649977a1cfbcbe3af7ea45b4b4f42a39330c4fefc1bb8c1787a8aa0"
+    },
+    {
+      "path": "lib/code/inc/spreader/cell-grid.h",
+      "sha256": "f87f8caff329f998a6955314bf79984b29297caa45bc6cc3fc2b2709faab0ee8"
+    },
+    {
+      "path": "lib/code/inc/spreader/cell.h",
+      "sha256": "0c48865cd149c73d53918ad4b0dd954f51ed9894840db21b0d71c8440a2e232a"
+    },
+    {
+      "path": "lib/code/inc/spreader/coerce.h",
+      "sha256": "2c7ef633e9a3575c4957a7295f31e405ff35d58d3fa687bdead2b716d49c0e60"
+    },
+    {
+      "path": "lib/code/inc/spreader/compiler.h",
+      "sha256": "74102d714944bbb1081a651909699623d338d8bc7e0ccdbda127dd7547c76ef1"
+    },
+    {
+      "path": "lib/code/inc/spreader/coro-async.h",
+      "sha256": "8b30c3743db0ae0d5dec32472422ac4284462f0779e2da00fc2b314815364ebf"
+    },
+    {
+      "path": "lib/code/inc/spreader/coro-generator.h",
+      "sha256": "f5d85c6413d2bc8fa0703d3aa19b0dda4ad65f4845b5b2e1f072c4c8d2555d68"
+    },
+    {
+      "path": "lib/code/inc/spreader/error-handling.h",
+      "sha256": "9567fb23a43e7357b7bbdb82c82b240bdb1b9c4d4bb8747a3e9e69212e36e228"
+    },
+    {
+      "path": "lib/code/inc/spreader/error.h",
+      "sha256": "ae23fae55c3f13578644cad81f2638b3b7c86f432e287dae2652f4f6e1ec492c"
+    },
+    {
+      "path": "lib/code/inc/spreader/externals.h",
+      "sha256": "471c0b9ae6fdfa084efeab522d2f2fe9449bc3927a260c4f8f6b7e8a12b44461"
+    },
+    {
+      "path": "lib/code/inc/spreader/fixed-size-memory-resource.h",
+      "sha256": "4c1bf3f5869f57c5539c57d9914b982dd0234fded7a35e4fa2b2b7b683b75295"
+    },
+    {
+      "path": "lib/code/inc/spreader/floating-decimal.h",
+      "sha256": "dc80eba78cd0d3a39a87d76e8534b75245168505400cdca342c5a13212950355"
+    },
+    {
+      "path": "lib/code/inc/spreader/formula-references.h",
+      "sha256": "016bae8d8a34d3717cbff8a48b5e81c7f67f14dc157e0f8fe3f0c015ccf54245"
+    },
+    {
+      "path": "lib/code/inc/spreader/formula.h",
+      "sha256": "aaa6fb69cb2237baaa1529de06e5c092b26fa61029c25c613ed9db90c34bf508"
+    },
+    {
+      "path": "lib/code/inc/spreader/geometry.h",
+      "sha256": "136c69e44bb150e87afa85bb493b2f0a5dd43d5495cb668dcc49820b72f12ccd"
+    },
+    {
+      "path": "lib/code/inc/spreader/interval-map.h",
+      "sha256": "483c666a02efc23b14a46c967063e273c9f76d63dec4cdc3476cbc15117a9161"
+    },
+    {
+      "path": "lib/code/inc/spreader/iteration.h",
+      "sha256": "c16119f3d37558aed475aea713d10ca5085b6b7c3abcc8d9ada7b171778f69b4"
+    },
+    {
+      "path": "lib/code/inc/spreader/linked-list.h",
+      "sha256": "ca0f53d5981269a72c0152beb6b61e1a5131f547c2be2eba5c161d5e7729c1f9"
+    },
+    {
+      "path": "lib/code/inc/spreader/mru-cache.h",
+      "sha256": "5ccf16a88f0d88493d85621eca4abba2d89d4aeff0d2b862ac76e26b63633063"
+    },
+    {
+      "path": "lib/code/inc/spreader/name-manager.h",
+      "sha256": "8569d173548b2ae087f9bad750d4bcc2b19287bdda806b2aa7d737511a37f847"
+    },
+    {
+      "path": "lib/code/inc/spreader/number.h",
+      "sha256": "172720940c93ca05bbd1a13ff146d27fbb4150270ae66e9e3e613bb6fe32ade1"
+    },
+    {
+      "path": "lib/code/inc/spreader/numeric.h",
+      "sha256": "bb0701d184f23686cd7a21ae58bdb7dd9d2e41f239f6ac4d941eb7624998ec45"
+    },
+    {
+      "path": "lib/code/inc/spreader/reference.h",
+      "sha256": "e7a55985056f90ae3e3b61d9f2587cf9c065ca8da94038e37b5b265097707918"
+    },
+    {
+      "path": "lib/code/inc/spreader/scalar-generator.h",
+      "sha256": "3c324dccb36e172201602a0e37d3c76571985fd473161a36da74c78357e866ae"
+    },
+    {
+      "path": "lib/code/inc/spreader/scalar.h",
+      "sha256": "c0d89b67d54f06ea93ccc088731df59c5350640370da28d19f1945d29706ad44"
+    },
+    {
+      "path": "lib/code/inc/spreader/sheet.h",
+      "sha256": "f5c82e78fb39da6463cb443a0569c8f6bdfcced02f92e444e3a80a52914a6862"
+    },
+    {
+      "path": "lib/code/inc/spreader/stack-memory-resource.h",
+      "sha256": "a850ecd6471b47d24222bc16896a288a18e2ef1c7028911417059556335da7ea"
+    },
+    {
+      "path": "lib/code/inc/spreader/tree-traversal.h",
+      "sha256": "f7a57a9584a96e5688d423f15d9365799592856105c6fe5a004fe5b417a9225f"
+    },
+    {
+      "path": "lib/code/inc/spreader/typelist.h",
+      "sha256": "1161e9083fef700d848c6d0c37be568b790c3107423c3872cadfddeb55f1611a"
+    },
+    {
+      "path": "lib/code/inc/spreader/types.h",
+      "sha256": "e8981e63ee6e56628dccd332dee484c09c6949e01c9fb2386f24e05cb2271686"
+    },
+    {
+      "path": "lib/code/inc/spreader/util.h",
+      "sha256": "84b52a27c46c6b914404d615fee46d31be5b376ca1681a3f2d1cb0ee8b285e3a"
+    },
+    {
+      "path": "lib/code/src/ast-node.cpp",
+      "sha256": "ea90fb3eb16e33f7546d04b3aaaf15b71e0fe62a63989b3d797cb2f058a2139e"
+    },
+    {
+      "path": "lib/code/src/cell-grid.cpp",
+      "sha256": "2dc4f0f731c428785b95c4a7f0e80bb8ddecd89253ae4a192411b5b5649fde25"
+    },
+    {
+      "path": "lib/code/src/cell.cpp",
+      "sha256": "8ec22e1ef18ea7a7913f71f3eebb609fbbbf78dc6dbc113878fa597db49683a4"
+    },
+    {
+      "path": "lib/code/src/coerce.cpp",
+      "sha256": "a02afebf4dd37e574bf85814448bd36e4c1d41ac59b7ade65650cc5b1ff2755e"
+    },
+    {
+      "path": "lib/code/src/error.cpp",
+      "sha256": "9f42dfe0a595ecf55bc03ee75698f1d3678c8a585efc23413d7708faf9c73ab8"
+    },
+    {
+      "path": "lib/code/src/execution-context.h",
+      "sha256": "d401f0da26a16c7701214a31c78fce10232c97d442317765ba87849987b84442"
+    },
+    {
+      "path": "lib/code/src/floating-decimal.cpp",
+      "sha256": "19e7500d0b26d5e8d82374f17f766dab562fc9ffd69ca84e83a16fbfcdbee0f0"
+    },
+    {
+      "path": "lib/code/src/formula-evaluator.cpp",
+      "sha256": "40e73b9f802e2e53bc6ad0e078ad99a62831337ae676bd89fd5e5cf563225f9d"
+    },
+    {
+      "path": "lib/code/src/formula-evaluator.h",
+      "sha256": "bff57a2b925b28a4bdebdcef63791d97dfd40f0c3fb4f2a593cb9c389938e6d7"
+    },
+    {
+      "path": "lib/code/src/formula-parser-builder.h",
+      "sha256": "84031aa499d54b9eed01a3be1419eeeb088f84061dd7c1b100d02bd89c137389"
+    },
+    {
+      "path": "lib/code/src/formula-references.cpp",
+      "sha256": "d369745f6f597a13d01de90314e72c94087785f225eff6593fa22161397a6ba2"
+    },
+    {
+      "path": "lib/code/src/formula.cpp",
+      "sha256": "91f0c39c129fabce4bd74f7b0e6d3f0a1e22b6eaf11658f4908502dd46e01a9d"
+    },
+    {
+      "path": "lib/code/src/formula.l",
+      "sha256": "7c77ad4665c46a27dc9b222177669307eee13fb91a64388bfd306394f64d9169"
+    },
+    {
+      "path": "lib/code/src/formula.y",
+      "sha256": "770d5994e987ae2c218600f807788fe218b57bdba891b56d5220daad31b197b0"
+    },
+    {
+      "path": "lib/code/src/functions/adding-function.md",
+      "sha256": "fe7bdaf65cd4825ea54b7c5bdfd270315e07e39c76c61f987ff2b727683d0dc2"
+    },
+    {
+      "path": "lib/code/src/functions/aggregator-function.cpp",
+      "sha256": "6149b5bf5222d3efdbeea63dc8650221e69a8388f1afb18fa0fba89fb076dadb"
+    },
+    {
+      "path": "lib/code/src/functions/aggregator-if-function.cpp",
+      "sha256": "36969f3e846d43ad1feb8005bc8a7d1a2f5cb84051c5bd6254493d6f280cdf47"
+    },
+    {
+      "path": "lib/code/src/functions/binary-operators.cpp",
+      "sha256": "c1c4ea888147e8868dc90e1a4607be5ef98060b92f6cef8ada8a1d294e3f42a0"
+    },
+    {
+      "path": "lib/code/src/functions/binary-operators.h",
+      "sha256": "39c72ae41b1a7a8f305092e08c108e2cd71d091e313ac3287f19908cf1c00d7c"
+    },
+    {
+      "path": "lib/code/src/functions/finite-scalar-function.cpp",
+      "sha256": "73b82302b91aea7f2d2c896984c2d5844a9f92e72eb8dbcb05b820bbd5c7142d"
+    },
+    {
+      "path": "lib/code/src/functions/func-choose.cpp",
+      "sha256": "a3d3b691290ad51492bc1ef4c6be1e8a9596e3ff0d9325b9b614de1152a3a9b4"
+    },
+    {
+      "path": "lib/code/src/functions/func-concatenate.cpp",
+      "sha256": "3e1cd92a29496b88a11c35ed3cb8a683bc9f4d168546aed913aaa8b30e86f98b"
+    },
+    {
+      "path": "lib/code/src/functions/func-hvlookup.cpp",
+      "sha256": "a8f489b64c5fa00e92cfa531097e94dd6a179f6d3a437b11cc0bb74f9eb6cd55"
+    },
+    {
+      "path": "lib/code/src/functions/func-if.cpp",
+      "sha256": "678ec9b9a3b8a5211935bd23582dd393ae14be0bc668ca9db5c632fcb2286e33"
+    },
+    {
+      "path": "lib/code/src/functions/func-index.cpp",
+      "sha256": "c803faae1ffe24949ecb356ea795a1bd479324bd25a9f5661b6ed45de3e07464"
+    },
+    {
+      "path": "lib/code/src/functions/func-indirect.cpp",
+      "sha256": "b230f8f7f16a667282a6e200ff004ddb7385c481485bb2a0793198bb5ee1a186"
+    },
+    {
+      "path": "lib/code/src/functions/func-match.cpp",
+      "sha256": "f701a8f26368a5e311b8c343e41169e3320332b8630af554cbee4b515169e532"
+    },
+    {
+      "path": "lib/code/src/functions/func-row-column.cpp",
+      "sha256": "60ce476cef8546bebd9b537821c5aa9c3b436924a9854d5244ba0c92ef77b5de"
+    },
+    {
+      "path": "lib/code/src/functions/func-switch.cpp",
+      "sha256": "6a8e8cda98c74f9b114be5f96313a3d78f8ce00df4e807bc0feb75f2ec24bcf7"
+    },
+    {
+      "path": "lib/code/src/functions/func-transpose.cpp",
+      "sha256": "23b078b30570c4c1be3fe86175404170a5f060d32c6f7a0b02f5a5ba76f7d519"
+    },
+    {
+      "path": "lib/code/src/functions/true-function-creation.h",
+      "sha256": "77560e6691e31733d2f0901c06f1d67b063f7707e1cc7c44462d977d1e2ff74c"
+    },
+    {
+      "path": "lib/code/src/functions/true-function.cpp",
+      "sha256": "52bc7c56b75f3f0195d56821252b7793a10d6f18e62d3be2fc9dbbdaf311cfd9"
+    },
+    {
+      "path": "lib/code/src/functions/true-function.h",
+      "sha256": "2019987005b1f5881a6dd49028bf153c04f6f44e74e6b25a315a7e79c74dc675"
+    },
+    {
+      "path": "lib/code/src/functions/unary-operators.cpp",
+      "sha256": "670f8f1c1e9262fdc288db2b37fce624527868dc0f3a17b714b535fb0aa51693"
+    },
+    {
+      "path": "lib/code/src/functions/unary-operators.h",
+      "sha256": "fac3814e76c52ab901a03ddc2d3b52b37c8f9e78006c51fe6edd88b935cc522b"
+    },
+    {
+      "path": "lib/code/src/macro-map.h",
+      "sha256": "251e557dfbfd1485deb114324af41bdea49cde91e9b233fab3fd90faad2e421e"
+    },
+    {
+      "path": "lib/code/src/mini-trie.h",
+      "sha256": "5ea56ed2ac5a3bbecfdcda5ea572833bc22177b559dfe5664f1367d799a5abc7"
+    },
+    {
+      "path": "lib/code/src/name-manager.cpp",
+      "sha256": "a108e1ed81e6987ca9e7984e4841d3e641c729a2a53c264d4c1d6d9cd9ded284"
+    },
+    {
+      "path": "lib/code/src/number-matcher.h",
+      "sha256": "3ba4c409dbc1cdf8d94efb9496980fe4199249c3fae9b842aaa940f9fe732576"
+    },
+    {
+      "path": "lib/code/src/number.cpp",
+      "sha256": "9be2df34b93ce47f65a9ae3d07a11c445031b5b80ccdf2b5f9cafdd5bd5af972"
+    },
+    {
+      "path": "lib/code/src/scalar-aggregators.h",
+      "sha256": "fa2a5f691a55c5beecc46abfbad372d3befeb7454c6be94645c6457aa09c27e1"
+    },
+    {
+      "path": "lib/code/src/scalar-boolean-aggregators.h",
+      "sha256": "ce43b34ada5f196eb5248d92845122db5643fa4b4b650f024706c4b5096ed5f9"
+    },
+    {
+      "path": "lib/code/src/scalar-boolean-functions.h",
+      "sha256": "310270e78a64e05a78d54a39dee43d0b21394beb340fb3ade70bd0942b16c0fe"
+    },
+    {
+      "path": "lib/code/src/scalar-date-functions.h",
+      "sha256": "d36d546e9a43afe8b00d430e5fef84442e5e8f922fd5c9a14d3dc55420841105"
+    },
+    {
+      "path": "lib/code/src/scalar-function.h",
+      "sha256": "49fad7609a3c810935d3224aaae6f55e6447cf5560b4ba30955f9245526b066e"
+    },
+    {
+      "path": "lib/code/src/scalar-info-functions.h",
+      "sha256": "b8ea37c7d21e9cd2a40e36ed2b90bf5f85dd35815953e0c0188b96cfae199244"
+    },
+    {
+      "path": "lib/code/src/scalar-lookup.h",
+      "sha256": "296755a7e45dc4ddee08a4a281024c164b50ca9ddbb68170027d26ceac9c9711"
+    },
+    {
+      "path": "lib/code/src/scalar-numeric-aggregators.h",
+      "sha256": "28259f20a1b7e02c5ac879fc4123d2ddf97f8f8811a64c49190dbd2224e504c7"
+    },
+    {
+      "path": "lib/code/src/scalar-numeric-functions.h",
+      "sha256": "24a99c8ffc7c55db8ee840f7ffa46a8134c63f073dc0385dade7ce99eff5dda2"
+    },
+    {
+      "path": "lib/code/src/scalar-operators.h",
+      "sha256": "d13a1fd169ef48a20e04a74bdcea20139fef114276002a3f981eddd1d1427128"
+    },
+    {
+      "path": "lib/code/src/scalar-string-aggregators.h",
+      "sha256": "e76da6e20c6af2b610d8da2689251abfb2233f0df45ebc772939dfe3fb1c8822"
+    },
+    {
+      "path": "lib/code/src/scalar-string-functions.h",
+      "sha256": "562e25e91c20aa6e6558c84684756f1c60e80bf1a7c6ac797a219f58336375b5"
+    },
+    {
+      "path": "lib/code/src/scalar-xif-matcher.cpp",
+      "sha256": "176b605c0d37e724d2a2203edc889cb62ff073dd3c709ddae336fbfe4a79d2e3"
+    },
+    {
+      "path": "lib/code/src/scalar-xif-matcher.h",
+      "sha256": "79f5e8487f32073857d2604d69503c3a784bc756c7286f2485c1058dc8a6218f"
+    },
+    {
+      "path": "lib/code/src/sheet.cpp",
+      "sha256": "b18c4c335c9a1be136077c6e437bcfa9e7c1053f023c4518c908accff932ffcc"
+    },
+    {
+      "path": "lib/code/src/whitespace.h",
+      "sha256": "699ea4f078e1e976119cf632831cb2ca2f51104b8363aebd81fce1626eb4d691"
+    },
+    {
+      "path": "lib/code/src/wildcarder.h",
+      "sha256": "8e3a5d57ac788d1d4550f4d537894f4d56251bebd0be9b121fd651406e54e13d"
+    }
+  ]
+}

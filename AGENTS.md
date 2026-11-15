@@ -8,8 +8,14 @@
   grid, row/column headings, selection, formula editing, ranges, and scrolling.
   Use the DM32/DM42n display as the main workspace. A headless engine is an
   internal calculation component; engine selection must serve the graphical UI.
-- The foundation is on `main`. The user will create `dev`; do not create it or
-  begin application implementation as part of the foundation task.
+- The foundation is on `main`; the user created `dev`. Development of `sheets47`
+  version `0.1.0` is now authorized on `dev`, using Spreader and the agreed grid
+  design. Own saved data/configuration belongs under `/SHEETS47` on the device.
+- Preserve battery life: no busy polling, periodic UI redraw, or blinking cursor.
+  Sleep while idle, refresh changed LCD rows, and avoid cursor-driven disk writes.
+- Keep tools, downloads, tests, logs, and build output in this repository where
+  practical. Share reproducible setup and evidence; keep large local toolchains
+  and scratch output ignored. Explain local patches and qualification limits.
 - Keep the portable spreadsheet backend behind an adapter. Keep DMCP headers,
   keypad codes, LCD access, and filesystem calls in the platform layer.
 - Read `docs/research/engines.md` before selecting or importing an engine.

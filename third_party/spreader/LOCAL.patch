@@ -1,0 +1,186 @@
+--- a/lib/code/generated/formula-lexer.cpp
++++ b/lib/code/generated/formula-lexer.cpp
+@@ -1990,7 +1990,9 @@
+ 	b->yy_fill_buffer = 0;
+ 	b->yy_buffer_status = YY_BUFFER_NEW;
+ 
+-	yy_switch_to_buffer( b , yyscanner );
++	// Sheets47: buffer ownership has not yet transferred if stack allocation fails.
++	try { yy_switch_to_buffer( b , yyscanner ); }
++	catch (...) { yyfree(b, yyscanner); throw; }
+ 
+ 	return b;
+ }
+@@ -2054,8 +2056,9 @@
+ {
+ 	struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+ 	(void)yyg;
+-	fprintf( stderr, "%s\n", msg );
+-	exit( YY_EXIT_FAILURE );
++	// Sheets47: report scanner allocation failure to the workbook transaction.
++	(void)msg;
++	throw std::bad_alloc();
+ }
+ 
+ /* Redefine yyless() so it works in section 3 code. */
+--- a/lib/code/generated/formula-parser.h
++++ b/lib/code/generated/formula-parser.h
+@@ -1669,7 +1669,8 @@
+       typedef typename S::size_type size_type;
+       typedef typename std::ptrdiff_t index_type;
+ 
+-      stack (size_type n = 200) YY_NOEXCEPT
++      // Sheets47: constructing seq_ can allocate and must propagate bad_alloc.
++      stack (size_type n = 200)
+         : seq_ (n)
+       {}
+ 
+--- a/lib/code/inc/spreader/cell-grid.h
++++ b/lib/code/inc/spreader/cell-grid.h
+@@ -19,9 +19,15 @@
+ 
+     private:
+         inline static constexpr Size s_sizePowers[] = {
++        #if SHEETS47_SMALL_GRID
++            // Sheets47: 4x8 entries per level, 64x512 coordinate coverage.
++            // Keep the hierarchical storage algorithm; avoid desktop-size tiles.
++            Size{2, 3}, Size{2, 3}, Size{2, 3}
++        #else
+             Size{4, 10}, // 2^14 =>  16kB *  sizeof(void *) = 128kb(64bit)
+             Size{4, 10},
+             Size{8, 11}  // 2^19 => 0.5MB * sizeof(void *) = 4MB(64bit)
++        #endif
+         };
+         inline static constexpr unsigned s_maxLevel = static_cast<unsigned>(std::size(s_sizePowers)) - 1;
+         
+@@ -108,7 +114,10 @@
+             Tile(const Tile & ) = delete;
+             Tile(Tile && ) = delete;
+             ~Tile() noexcept {
+-                if (m_nonNullCount) {
++                // Sheets47: an allocation failure can leave owned child tiles
++                // before their populated count reaches this parent. Always
++                // release pointers, including these partially built branches.
++                {
+                     for(auto p: m_data) {
+                         if constexpr (Level != s_maxLevel)
+                             delete p;
+--- a/lib/code/inc/spreader/cell.h
++++ b/lib/code/inc/spreader/cell.h
+@@ -77,7 +77,7 @@
+     public:
+         template<class T>
+         requires(std::is_constructible_v<Scalar, T &&>)
+-        static auto create(T && val) noexcept(std::is_nothrow_constructible_v<Scalar, T &&>) -> ValueCellPtr {
++        static auto create(T && val) -> ValueCellPtr {
+             return ValueCellPtr(new ValueCell(std::forward<T>(val)));
+         }
+ 
+@@ -103,7 +103,7 @@
+     class FormulaCell final : public Cell {
+         friend Cell::Deleter;
+     public:
+-        static auto create(ConstFormulaPtr && formula, ConstFormulaReferencesPtr && refs, Point location, bool generation) noexcept -> FormulaCellPtr
++        static auto create(ConstFormulaPtr && formula, ConstFormulaReferencesPtr && refs, Point location, bool generation) -> FormulaCellPtr
+             { return FormulaCellPtr(new FormulaCell(std::move(formula), std::move(refs), location, generation)); }
+ 
+         void * operator new(size_t size);
+@@ -202,7 +202,7 @@
+     public:
+         template<class T>
+         requires(std::is_constructible_v<Scalar, T &&>)
+-        static auto create(FormulaCell * parent, T && val) noexcept(std::is_nothrow_constructible_v<Scalar, T &&>) 
++        static auto create(FormulaCell * parent, T && val)
+             -> FormulaCellExtensionPtr { 
+             
+             return FormulaCellExtensionPtr(new FormulaCellExtension(parent, std::forward<T>(val))); 
+--- a/lib/code/src/cell.cpp
++++ b/lib/code/src/cell.cpp
+@@ -7,7 +7,12 @@
+ 
+ using namespace Spreader;
+ 
+-static FixedSizeMemoryResource<sizeof(ValueCell), alignof(ValueCell), 1024> g_valueCellMemory;
++#if SHEETS47_SMALL_GRID
++static constexpr size_t CellPoolPageCount = 32;
++#else
++static constexpr size_t CellPoolPageCount = 1024;
++#endif
++static FixedSizeMemoryResource<sizeof(ValueCell), alignof(ValueCell), CellPoolPageCount> g_valueCellMemory;
+ 
+ void * ValueCell::operator new(size_t /*size*/) {
+     return g_valueCellMemory.allocate();
+@@ -17,7 +22,7 @@
+     g_valueCellMemory.deallocate(p);
+ }
+ 
+-static FixedSizeMemoryResource<sizeof(FormulaCell), alignof(FormulaCell), 1024> g_formulaCellMemory;
++static FixedSizeMemoryResource<sizeof(FormulaCell), alignof(FormulaCell), CellPoolPageCount> g_formulaCellMemory;
+ 
+ void * FormulaCell::operator new(size_t /*size*/) {
+     return g_formulaCellMemory.allocate();
+@@ -27,7 +32,7 @@
+     g_formulaCellMemory.deallocate(p);
+ }
+ 
+-static FixedSizeMemoryResource<sizeof(FormulaCellExtension), alignof(FormulaCellExtension), 1024> g_formulaCellExtensionMemory;
++static FixedSizeMemoryResource<sizeof(FormulaCellExtension), alignof(FormulaCellExtension), CellPoolPageCount> g_formulaCellExtensionMemory;
+ 
+ void * FormulaCellExtension::operator new(size_t /*size*/) {
+     return g_formulaCellExtensionMemory.allocate();
+--- a/lib/code/src/formula.cpp
++++ b/lib/code/src/formula.cpp
+@@ -21,11 +21,20 @@
+                     throw std::bad_alloc();
+                 std::terminate();
+             }
+-            m_buffer = sprf_scan_string(m_stringAccess.c_str(), m_scanner);
+-            if (!m_buffer)
+-                std::terminate();
+-            
+-            sprf_switch_to_buffer(m_buffer, m_scanner);
++            // Sheets47: own the scan bytes through RAII and release the scanner
++            // if any of its C allocations fails during construction.
++            try {
++                const auto* input = m_stringAccess.c_str();
++                m_input.assign(input, input + strlen(input));
++                m_input.push_back(0);
++                m_input.push_back(0);
++                m_buffer = sprf_scan_buffer(m_input.data(), m_input.size(), m_scanner);
++                if (!m_buffer) throw std::bad_alloc();
++            } catch (...) {
++                sprflex_destroy(m_scanner);
++                m_scanner = nullptr;
++                throw;
++            }
+         }
+         ~StringScanner() {
+             
+@@ -46,6 +55,7 @@
+         }
+     private:
+         String::char_access m_stringAccess;
++        std::vector<char> m_input;
+         yyscan_t m_scanner = nullptr;
+         YY_BUFFER_STATE m_buffer = nullptr;
+     };
+--- a/lib/code/src/scalar-date-functions.h
++++ b/lib/code/src/scalar-date-functions.h
+@@ -26,7 +26,7 @@
+             auto operator()() const noexcept -> Number {
+                 using namespace std::chrono;
+                 
+-            #if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
++            #if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__)) || defined(SHEETS47_DMCP5)
+                 
+                 auto now = time(nullptr);
+                 tm localTime;
+@@ -66,7 +66,7 @@
+             auto operator()() const noexcept -> Number {
+                 using namespace std::chrono;
+                 
+-            #if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
++            #if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__)) || defined(SHEETS47_DMCP5)
+                 
+                 auto now = time(nullptr);
+                 tm localTime;

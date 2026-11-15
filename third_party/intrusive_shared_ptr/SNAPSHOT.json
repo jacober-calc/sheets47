@@ -1,0 +1,40 @@
+{
+  "repository": "https://github.com/gershnik/intrusive_shared_ptr",
+  "revision": "4aeb70a2f05560338a919e3f2c9a9208274c7a7a",
+  "archive_url": "https://codeload.github.com/gershnik/intrusive_shared_ptr/tar.gz/4aeb70a2f05560338a919e3f2c9a9208274c7a7a",
+  "archive_sha256": "a1db2129d47f757f81e9192f90df5484ddbdca99f7878c5ec0df14c8912592f2",
+  "files": [
+    {
+      "path": "LICENSE.txt",
+      "sha256": "b871ff61828988517f76b23335ceeb1f89f4e9a9615824955456b9090f038d28"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/apple_cf_ptr.h",
+      "sha256": "8d717dfdb8ae782ad3f8c41b1c5dc21d0145206b97fd3bca801f060d66557bc5"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/com_ptr.h",
+      "sha256": "1999bc9ad5403b5743debd0dd67c2cfc468898b76c7de2bed3dc2b3f3b3040a2"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/common.h",
+      "sha256": "012ec14caa542e1706dfc057d536f0c9dc44c71188a35cdcdb1ca024613d5b7f"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/intrusive_shared_ptr.h",
+      "sha256": "be00e939d37cc16940b21e7fedfcd63e91a377d27129a4f59022ac15023bd204"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/python_ptr.h",
+      "sha256": "7401f1d34ea73b4ff5c51d4346be51d00666e12a18bc85b35499c216093bd572"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/ref_counted.h",
+      "sha256": "2f50b2d8189b745f7724263d0df988212057ba43d82328e3eae2d080e2f1fc11"
+    },
+    {
+      "path": "inc/intrusive_shared_ptr/refcnt_ptr.h",
+      "sha256": "f610bcb11de1ddf5febeb674e22422dd0c3f5723ded81ae64011a7d7796dd85c"
+    }
+  ]
+}

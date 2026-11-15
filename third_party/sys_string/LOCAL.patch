@@ -1,0 +1,13 @@
+--- a/lib/inc/sys_string/impl/platform.h
++++ b/lib/inc/sys_string/impl/platform.h
+@@ -139,5 +139,9 @@
+     #endif
+ 
+ #else
+-    #error Unsupported platform
+-#endif+    // Sheets47: the explicitly selected generic implementation above needs no
++    // OS services. Permit it for the bare-metal DMCP5/newlib target.
++    #if !SYS_STRING_USE_GENERIC && !SYS_STRING_USE_PYTHON
++        #error Unsupported platform
++    #endif
++#endif

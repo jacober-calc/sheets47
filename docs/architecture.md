@@ -3,6 +3,11 @@
 Research baseline: 2026-11-12. These are design proposals, not implemented APIs
 or measured product limits.
 
+Implementation notes, 14 November 2026: `sheets47` 0.1.0 selects Spreader and
+implements the basic graphical worksheet. [Building](building.md),
+[the user guide](user-guide.md), and [validation](validation-0.1.0.md) describe
+current behavior and its limits; unimplemented proposals below remain proposals.
+
 ## Required user experience
 
 Sheets47 is a graphical spreadsheet. The normal workspace must show cells in a
@@ -30,7 +35,7 @@ They are design artifacts with a substitute font, not running calculator output.
 
 ## Platform and application model
 
-Deliver a standalone `SHEETS47.pg5` for DMCP5. DM42n and DM32 are the intended
+Deliver a standalone `sheets47.pg5` for DMCP5. DM42n and DM32 are the intended
 hardware targets; C47/R47 describe calculator software and associated key
 layouts. Loading Sheets47 replaces the active calculator program until that
 program is loaded again. Do not assume access to C47's engine, registers, fonts,
@@ -43,6 +48,15 @@ structural edits, recalculation, and access for persistence. The backend should
 own cell storage and formula semantics; avoid duplicating a workbook model just
 to draw it. Project metadata can hold viewport, formats, and editor state that
 the engine does not represent.
+
+For 0.1.0 the adapter additionally retains a bounded list of source text and
+format records. It is used to serialize and construct a candidate Spreader sheet
+for each committed edit, then swap only after successful calculation. The UI
+has no second calculation model. This deliberately trades peak memory and some
+commit time for rollback on allocation failure. The initial cap is 256 populated
+cells in A1:Z256; it is an implementation limit, not a measured device capacity.
+Local Spreader patches reduce tile/pool granularity and repair allocation-error
+propagation, with original hashes and changes recorded in `third_party/`.
 
 ```mermaid
 flowchart TD
