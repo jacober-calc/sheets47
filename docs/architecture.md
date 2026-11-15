@@ -3,6 +3,31 @@
 Research baseline: 2026-11-12. These are design proposals, not implemented APIs
 or measured product limits.
 
+## Required user experience
+
+Sheets47 is a graphical spreadsheet. The normal workspace must show cells in a
+familiar grid with column letters, row numbers, an active cell, range selection,
+formula/value editing, and scrolling. The DM32/DM42n screen is the principal
+workspace; softkeys and keypad actions operate on the visible worksheet.
+
+This product requirement comes before engine preference. “Headless” refers only
+to a reusable calculation backend. The selected backend must support the grid's
+editing and reference behavior and leave adequate memory for its interface.
+The application supplies the graphical worksheet, adapting selected existing
+UI code where useful and compatible. No candidate's desktop or terminal UI has
+been qualified for direct reuse on DMCP5.
+
+Review worksheet, editor, and range-selection screen designs and their key flows
+alongside engine feasibility, before committing to an engine. Use familiar
+spreadsheet interaction as the product model and native DMCP drawing/menu
+conventions as platform references.
+
+See the [400 × 240 worksheet and range-selection concepts](design/README.md)
+for original graphical drawings informed by the inspected Chess47/Nav47
+screenshots. Their native black-and-white previews illustrate actual cell
+borders, inverted headings, selection frames, and softkeys at display resolution.
+They are design artifacts with a substitute font, not running calculator output.
+
 ## Platform and application model
 
 Deliver a standalone `SHEETS47.pg5` for DMCP5. DM42n and DM32 are the intended

@@ -4,6 +4,10 @@
 
 - Target standalone DMCP5 `.pg5` programs for DM42n and DM32. C47/R47 are
   alternative calculator applications, not an API that runs alongside Sheets47.
+- The product must have a familiar graphical spreadsheet UI: a visible cell
+  grid, row/column headings, selection, formula editing, ranges, and scrolling.
+  Use the DM32/DM42n display as the main workspace. A headless engine is an
+  internal calculation component; engine selection must serve the graphical UI.
 - The foundation is on `main`. The user will create `dev`; do not create it or
   begin application implementation as part of the foundation task.
 - Keep the portable spreadsheet backend behind an adapter. Keep DMCP headers,

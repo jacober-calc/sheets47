@@ -4,6 +4,15 @@ Reviewed 2026-11-12 using primary project sources and a local mtCellEdit archive
 This is a source-level feasibility study; no engine has been compiled, ported,
 benchmarked, or proven to fit DMCP5.
 
+## Product requirement: graphical spreadsheet
+
+The required application presents a familiar graphical cell grid on the
+DM32/DM42n screen, with headings, selection, formula editing, ranges, and
+scrolling. Engine recommendations concern the calculation component beneath
+that UI. No candidate's existing desktop or terminal interface has been
+qualified for direct reuse on DMCP5. Evaluate interface design and engine
+feasibility together; the engine must enable the intended user experience.
+
 ## Recommendation
 
 **Evaluate Spreader first, mtCellEdit second; keep SC-IM as a fallback.** Spreader
@@ -17,7 +26,8 @@ suggests.
 This order favors integration effort over popularity alone. A headless library
 avoids transplanting terminal control, process management, or a desktop GUI.
 There is no verified drop-in engine for this target yet. The first `dev` task
-should compare actual memory and link requirements before extensive UI work.
+should compare actual memory and link requirements alongside worksheet screen
+and interaction design, before extensive implementation.
 
 ## Shortlist
 
