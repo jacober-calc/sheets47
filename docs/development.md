@@ -32,7 +32,17 @@ dependency downloads inside the project while evaluating; do not modify
 Brainbox. Do not run cleanup, installation, or reference build targets before
 checking them for file deletion.
 
-## First work on dev: qualify an engine
+## First work on dev: define the graphical worksheet and qualify its engine
+
+The required product is a familiar graphical spreadsheet. Begin with reviewable
+screen and interaction designs for the cell grid, active cell, formula editor,
+scrolling, and range selection. These designs establish what an engine must
+enable. Any initial visual prototype should state which behavior is simulated;
+it cannot establish formula correctness or hardware compatibility.
+
+Engine feasibility proceeds alongside this interface work. A minimal target
+link is still required before extensive implementation or engine commitment,
+with an explicit memory reserve for the graphical worksheet and editor.
 
 1. Pin the official DMCP5 SDK and an ARM compiler already available to the
    developer. Inspect version commands and build recipes without installing
@@ -40,7 +50,7 @@ checking them for file deletion.
 2. Start with **Spreader** for its complete headless API, using a single-threaded
    configuration and an explicit pinned helper dependency set. Exercise formulas
    and structural edits on a host harness. See the [engine study](research/engines.md).
-3. Cross-link a minimal DMCP5 harness before building the worksheet UI. Measure
+3. Cross-link a minimal DMCP5 harness before extensive worksheet implementation. Measure
    empty-engine cost, section sizes, stack, peak heap, sparse/dense cell cost,
    formula temporaries, and failed allocations. Verify C++ runtime symbols and
    recovery behavior under the SDK allocation model.
@@ -61,6 +71,7 @@ low-maintenance reuse goal. No candidate has passed these checks yet.
 
 | Stage | Reviewable result |
 | --- | --- |
+| Graphical worksheet design | Familiar cell grid, editor, scrolling, range selection, and keypad/softkey flows |
 | Engine qualification | Portable tests plus a cross-linked and measured DMCP5 harness |
 | Calculator shell | Grid, cursor, editor, softkeys, setup access, sleep/resume |
 | Workbook persistence | Versioned save/load, failed-write recovery, CSV/TSV exchange |
