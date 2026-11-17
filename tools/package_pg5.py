@@ -20,6 +20,8 @@ def package(source, destination):
         raise ValueError('Unexpected QSPI dependency')
     if data[28:44].split(b'\0')[0]!=b'sheets47' or data[44:60].split(b'\0')[0]!=b'0.1.0':
         raise ValueError('Program identity/version mismatch')
+    if struct.unpack_from('<I',data,60)[0]!=0x32334d44:
+        raise ValueError('Program must require the DM32 system keymap')
     struct.pack_into('<I',data,4,len(data))
     output=bytes(data)+hashlib.sha1(data).digest()
     destination.parent.mkdir(parents=True,exist_ok=True)

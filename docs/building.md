@@ -23,6 +23,12 @@ It is a host interface, not a DMCP5 emulator. Its data is confined to
 `build/host/SHEETS47/`; pixel output and test results are in `build/host/`.
 Closing the viewer does not implicitly save a draft or delete files.
 
+The host suite also compiles the real DMCP5 file/input/menu adapters against
+the pinned SDK, redirecting firmware services to test stubs. These checks cover
+protected writes and system-menu access after save failure; they do not emulate
+the DM32 keyboard scanner or physical storage. See the
+[0.1.0 repair notes](changes/0.1.0-storage-menu-fix.md).
+
 An additional compiler instrumentation pass runs the same checks under
 AddressSanitizer, UndefinedBehaviorSanitizer and LeakSanitizer:
 
@@ -69,6 +75,13 @@ python3 -B tools/build.py device --jobs 2
 Output: `build/device/sheets47.elf`, raw image, link map, compiler stack-use
 reports, per-source logs, `compile_commands.json`, `build.json`, and the packaged
 `dist/sheets47-0.1.0/sheets47.pg5`. Program identity is lowercase `sheets47`.
+This build explicitly requires the **DM32** system keymap (`0x32334d44`, ASCII
+`DM32`) in its program header, matching the native DM32 application. Packaging
+rejects a wildcard or another keymap. A DM42n build would need its own appropriate
+keymap requirement and validation; this artifact is prepared for the user's DM32.
+The [16 November header verification](validation/2026-11-16-dm32-header.json)
+records the binary hash and confirms only the keymap header word changed from
+the storage/menu repair build, apart from the loader digest.
 The ARM flags follow the SDK's Thumb/ARMv7E-M, hard-float, FPv4-SP-D16 ABI.
 The project uses size optimization, section garbage collection, C++20,
 single-threaded Spreader, exceptions, and release assertions. The derived

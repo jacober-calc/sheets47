@@ -16,6 +16,7 @@ class FilePort {
 public:
     virtual ~FilePort() = default;
     virtual bool prepare() = 0;
+    virtual const char* error() const { return nullptr; }
     virtual ReadResult read(const std::string& name, std::vector<uint8_t>& data, size_t max_bytes) = 0;
     virtual bool write(const std::string& name, const std::vector<uint8_t>& data, bool create_new) = 0;
 };

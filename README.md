@@ -21,6 +21,10 @@ number formats, and versioned save/load under `/SHEETS47`. Device builds produce
 `sheets47.pg5`; the host view runs the same commands, renderer, and engine.
 Hardware qualification remains separate from host checks and cross-link results.
 
+The initial DM32 trial found storage and system-menu access failures. The
+[0.1.0 repair notes](docs/changes/0.1.0-storage-menu-fix.md) explain the fixes,
+regression checks, and pending device retest.
+
 Use **FILE → DEMO** to explore the sample worksheet. See the
 [implemented worksheet, range selection, and editor](docs/screenshots/README.md).
 

@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-16",
+  "program": "sheets47",
+  "version": "0.1.0",
+  "required_keymap": "DM32",
+  "required_keymap_id": "0x32334d44",
+  "header_offset": 60,
+  "matches_native_dm32_header": true,
+  "body_change_offsets_from_previous_repair_build": [
+    60,
+    61,
+    62,
+    63
+  ],
+  "program_bytes": 454244,
+  "program_sha256": "430b95b5e71feb337434dff788f9bc118b6cdcd15d730bd53c3a45ed3355b5e7",
+  "previous_repair_build_sha256": "ceb08b7f69ad2f96cdca5987255bb2824565ec06d050132ed41f166084912eb9",
+  "loader_digest_verified": true,
+  "device_retest": "pending",
+  "note": "Metadata-only rebuild. Application image is otherwise byte-identical to the storage/menu repair build. The previous host suite passed 1164 checks; no new hardware or sanitizer result is claimed."
+}

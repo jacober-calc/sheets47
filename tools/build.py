@@ -55,6 +55,9 @@ def main():
         includes += ['third_party/dmcp5/dmcp', 'src/platform/dmcp5']
         flags += ['-std=gnu++20', '-DSHEETS47_DMCP5=1', '-DSYS_STRING_USE_GENERIC=1', '-fno-rtti', '-fstack-usage',
                   '-D__weak=__attribute__((weak))', '-D__packed=__attribute__((__packed__))']
+    else:
+        includes += ['third_party/dmcp5/dmcp']
+        flags += ['-DSHEETS47_DMCP5_TEST=1', '-D__packed=__attribute__((__packed__))']
     flags += cpu + ['-I' + item for item in includes]
     engine = ROOT / 'third_party/spreader/lib/code'
     sources = sorted(engine.glob('src/*.cpp')) + sorted(engine.glob('src/functions/*.cpp')) + sorted(engine.glob('generated/*.cpp'))
@@ -66,7 +69,8 @@ def main():
         sources += [ROOT / 'third_party/dmcp5/dmcp/sys/pgm_syscalls.c', ROOT / 'third_party/dmcp5/dmcp/startup_pgm.s']
     else:
         sources += sorted((ROOT / 'src/platform/host').glob('*.cpp'))
-        sources += [ROOT / 'tests/host_tests.cpp']
+        sources += [ROOT / 'src/platform/dmcp5' / name for name in ['files.cpp','input.cpp','setup.cpp']]
+        sources += [ROOT / 'tests/host_tests.cpp', ROOT / 'tests/dmcp5_tests.cpp']
     # Header/source hashing avoids stale objects after header edits, with no
     # dependency-generator cleanup. Application is deliberately small for v0.1.
     headers = sorted((ROOT / 'src').rglob('*.h')) + sorted((ROOT / 'src').rglob('*.hpp'))

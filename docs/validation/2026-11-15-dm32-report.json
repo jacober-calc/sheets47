@@ -1,0 +1,18 @@
+{
+  "reported_date": "2026-11-15",
+  "device": "DM32",
+  "firmware": "not supplied",
+  "keymap": "not supplied",
+  "reported_version": "0.1.0 initial build",
+  "artifact_hash_confirmed_on_device": false,
+  "observations": {
+    "worksheet_ui": "user reports it looks great",
+    "demo": "loads",
+    "new_worksheet": "appears to work",
+    "save": "storage inaccessible; not saved",
+    "file_setup": "save failure blocks system menu",
+    "shift_zero": "no menu; SHIFT indicator remains displayed"
+  },
+  "repair_status": "host regression checks and cross-build; awaiting DM32 retest",
+  "notes": "User explicitly identified DM32 as their test device. This is a user report, not an instrumented hardware test or validation of the replacement binary."
+}

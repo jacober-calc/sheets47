@@ -21,6 +21,17 @@ bool Application::save(){
     notify(storage_.error());return false;
 }
 bool Application::suspend(){return !dirty() || save();}
+bool Application::prepare_setup(){
+    shifted=false;
+    bool continue_unsaved=setup_without_save_;setup_without_save_=false;
+    if(mode==Mode::Reference||mode==Mode::Functions||editing()){
+        notify("Finish or cancel the edit before SETUP");return false;
+    }
+    if(dirty()&&!continue_unsaved&&!save()){
+        confirm(Pending::Setup,"Save failed. SETUP can reset; continue unsaved?");return false;
+    }
+    return true;
+}
 void Application::resumed(){if(dirty())notify("UNSAVED: FILE > SAVE to retry");}
 void Application::move(int dx,int dy){
     view.active.col=uint8_t(std::clamp(int(view.active.col)+dx,0,int(MaxCols)-1));
@@ -49,6 +60,7 @@ void Application::execute(Pending pending){
         else notify(result==LoadResult::Empty?"No saved workbook":storage_.error());
     }else if(pending==Pending::Clear)feedback(workbook.clear(selection()));
     else if(pending==Pending::DeleteRow)feedback(workbook.erase_row(view.active.row));
+    else if(pending==Pending::Setup){setup_request_=true;setup_without_save_=true;}
     selecting=false;menu=Menu::Worksheet;
 }
 std::array<const char*,6> Application::softkeys() const {
@@ -56,7 +68,7 @@ std::array<const char*,6> Application::softkeys() const {
         static const std::array<const char*,6> banks[]={{"A","B","C","D","E","F"},{"G","H","I","J","K","L"},{"M","N","O","P","Q","R"},{"S","T","U","V","W","X"},{"Y","Z","SPACE","'","$",":"},{"=",",","^","<",">","%"}};
         return banks[alphabet_bank];
     }
-    if(mode==Mode::Confirm)return {"YES","","","","","CANCEL"};
+    if(mode==Mode::Confirm)return {pending_==Pending::Setup?"CONTINUE":"YES","","","","","CANCEL"};
     if(mode==Mode::Help||mode==Mode::Info)return {"","","","","","BACK"};
     if(mode==Mode::Functions)return {"","","","","","BACK"};
     if(mode==Mode::Reference)return {"INSERT",":","$","","","BACK"};
@@ -71,6 +83,7 @@ bool Application::handle(Event event){
         if(event.key==Key::None)return false;
         if(event.key==Key::Shift){shifted=!shifted;return true;}
         bool shifted_event=shifted;shifted=false;
+        if(event.key==Key::Unmapped){notify("Key has no worksheet action; FILE > SETUP");return true;}
         if(shifted_event&&event.key==Key::Digit&&event.character=='0'){setup_request_=true;return true;}
         if(mode==Mode::Confirm){
             if(event.key==Key::F1){auto action=pending_;pending_=Pending::None;mode=Mode::Worksheet;execute(action);}

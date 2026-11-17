@@ -45,6 +45,7 @@ def main():
     if magic!=0xd377c0de or size!=len(data)-20 or cnr!=3 or version!=17 or qsize or qcrc:raise ValueError('Unexpected PG5 requirements')
     if not (entry&1 and 0x080a0000<=entry-1<0x080a0000+size):raise ValueError('Invalid program entry')
     if data[28:44].split(b'\0')[0]!=b'sheets47' or data[44:60].split(b'\0')[0]!=b'0.1.0':raise ValueError('Program identity mismatch')
+    if struct.unpack_from('<I',data,60)[0]!=0x32334d44:raise ValueError('Program must require the DM32 system keymap')
     raw_image=bytearray((ROOT/'build/device/sheets47.bin').read_bytes())
     struct.pack_into('<I',raw_image,4,len(raw_image))
     if data[:-20]!=bytes(raw_image):
@@ -66,10 +67,12 @@ def main():
             if len(parts)>=3 and parts[1].isdigit():stack.append({'bytes':int(parts[1]),'function':parts[0],'kind':parts[2]})
     stack.sort(key=lambda item:item['bytes'],reverse=True)
     record={
-        'date':'2026-11-14','program':'sheets47','version':'0.1.0','status':'host-tested and cross-linked; hardware untested',
+        'date':'2026-11-15','program':'sheets47','version':'0.1.0','status':'host-tested and cross-linked; storage/menu repair awaits DM32 retest',
+        'prior_build_device_report':json.loads((ROOT/'docs/validation/2026-11-15-dm32-report.json').read_text()),
         'base_git_revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'technical_source_set_sha256':technical_source_hash,'source_sha256':sources,
         'program_bytes':len(data),'program_sha256':digest(binary),'interface':f'{cnr}.{version}',
+        'required_keymap':'DM32','required_keymap_id':'0x32334d44',
         'sections':sections,'builds':builds,'host':host,'sanitizers':asan,'host_filesystem_roundtrip':roundtrip,
         'largest_compiled_function_frame':stack[0] if stack else None,
         'target_heap':'not measured','target_stack_high_water':'not measured','hardware_timing_and_power':'not measured',
@@ -78,8 +81,14 @@ def main():
     (ROOT/'docs/validation/0.1.0.json').write_text(json.dumps(record,indent=2)+'\n')
     summary=f'''# sheets47 0.1.0 validation
 
-Recorded 14 November 2026. This is the first implementation on `dev`.
-**Status: host-tested and cross-linked; no calculator hardware test has been performed.**
+Recorded 15 November 2026. Version 0.1.0 on `dev`, including the storage/menu repair.
+**Status: host-tested and cross-linked; this replacement binary awaits DM32 retest.**
+
+The user ran the original build on DM32: the worksheet/demo worked, but Save and
+system-menu access failed. The [repair notes](changes/0.1.0-storage-menu-fix.md)
+record the causes, changes, and retest sequence. Installed firmware/keymap and
+the exact original device binary hash were not supplied. Previous hardware
+feedback does not validate this replacement binary.
 
 ## Artifact and platform
 
@@ -87,6 +96,7 @@ Recorded 14 November 2026. This is the first implementation on `dev`.
 - Artifact: `dist/sheets47-0.1.0/sheets47.pg5`, {len(data):,} bytes.
 - SHA-256: `{digest(binary)}`.
 - DMCP5 interface requirement: {cnr}.{version}, from the pinned official SDK 3.57.
+- Required system keymap: DM32 (`0x32334d44`); the previous wildcard is removed.
 - No QSPI payload, custom USB stack, serial console, or firmware update.
 - ARM compiler: {builds['device']['compiler']}.
 - Host compiler: {builds['host']['compiler']}.
@@ -128,6 +138,13 @@ The INFO screen exposes current target free/largest heap for future trials.
 - UI tests exercise commit/cancel, reference insertion into the original edited
   cell, letter palette, range mode, unchanged-frame zero updates, partial
   navigation updates, and forced redraw after simulated resume.
+- The actual DMCP5 file/input/menu adapters also run against SDK declarations
+  with stub firmware services: write-protected idle state, directory creation,
+  scoped write enable, open/write/close failures and exact protection restore,
+  device-adapter save/load, FILE/SAVE, SHIFT+0 with/without release, FILE/SETUP,
+  failed-save continue/cancel, and successful retry. Menu entry checks that no
+  file is open and write permission is restored. Unmapped presses clear SHIFT.
+  These are adapter regression tests, not physical firmware or key-scan tests.
 - A separate three-process test uses the real host filesystem: save the sample
   total 18.50, reopen and edit quantity B2 to obtain 23.50, save again, then
   reopen in another process and recover 23.50. This verifies the host FilePort,
@@ -167,7 +184,8 @@ and controlled save interruption. The host suspend/resume tests cover the
 portable state model, not the firmware power state machine. The optional Tk
 viewer has not been manually exercised in a graphical desktop session here.
 
-No physical calculator was flashed or modified. No compatibility or durability
+The agent did not upload to or modify a physical calculator. The user supplied
+the limited initial DM32 observations above. No compatibility or durability
 claim follows merely from this successful link. Binary, source, notices and
 build evidence are prepared locally for review rather than published remotely.
 
@@ -178,19 +196,21 @@ See [the user guide](user-guide.md), [build instructions](building.md),
     (ROOT/'docs/validation-0.1.0.md').write_text(summary)
     for source,name in [(ROOT/'NOTICE.md','NOTICE.md'),(ROOT/'LICENSE','LICENSE'),(ROOT/'docs/user-guide.md','USER-GUIDE.md'),(ROOT/'docs/validation-0.1.0.md','VALIDATION.md')]:
         (OUT/name).write_bytes(source.read_bytes())
-    documents=['building.md','user-guide.md','validation-0.1.0.md','validation/0.1.0.json','screenshots/README.md']
+    documents=['building.md','user-guide.md','validation-0.1.0.md','validation/0.1.0.json','validation/2026-11-15-dm32-report.json','validation/2026-11-16-dm32-header.json','changes/0.1.0-storage-menu-fix.md','screenshots/README.md']
     documents += [str(path.relative_to(ROOT/'docs')) for path in (ROOT/'docs/screenshots').glob('*.png')]
     for name in documents:
         destination=OUT/'docs'/name;destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_bytes((ROOT/'docs'/name).read_bytes())
-    (OUT/'VALIDATION.md').write_text(summary.replace('(user-guide.md)','(docs/user-guide.md)').replace('(building.md)','(docs/building.md)').replace('(screenshots/README.md)','(docs/screenshots/README.md)').replace('(validation/0.1.0.json)','(docs/validation/0.1.0.json)'))
+    (OUT/'VALIDATION.md').write_text(summary.replace('(user-guide.md)','(docs/user-guide.md)').replace('(building.md)','(docs/building.md)').replace('(screenshots/README.md)','(docs/screenshots/README.md)').replace('(validation/0.1.0.json)','(docs/validation/0.1.0.json)').replace('(changes/0.1.0-storage-menu-fix.md)','(docs/changes/0.1.0-storage-menu-fix.md)'))
     (OUT/'README.md').write_text('''# sheets47 0.1.0 review package
 
 `sheets47.pg5` is the standalone DMCP5 application. Interface 3.17 is required.
-It is host-tested and cross-linked; hardware compatibility is not yet qualified.
+The program header requires the DM32 system keymap (`0x32334d44`).
+This storage/menu repair is host-tested and cross-linked, awaiting DM32 retest.
 
 - [User guide](docs/user-guide.md)
 - [Validation and measured link sizes](docs/validation-0.1.0.md)
+- [Storage/menu fixes and DM32 retest](docs/changes/0.1.0-storage-menu-fix.md)
 - [Actual application images](docs/screenshots/README.md)
 - [Build instructions](docs/building.md)
 - [Notices](NOTICE.md), LICENSE, and the supplied licenses/ directory
@@ -218,7 +238,7 @@ No tool in this package automatically flashes or changes calculator firmware.
                     info=tar.gettarinfo(str(path),arcname='sheets47-0.1.0/'+name)
                     info.uid=info.gid=0;info.uname=info.gname='';info.mtime=0
                     with path.open('rb') as stream:tar.addfile(info,stream)
-    (OUT/'release.json').write_text(json.dumps({'program':'sheets47','version':'0.1.0','hardware_tested':False,'program_sha256':digest(binary),'source_archive_sha256':digest(archive),'technical_source_set_sha256':technical_source_hash},indent=2)+'\n')
+    (OUT/'release.json').write_text(json.dumps({'program':'sheets47','version':'0.1.0','build_note':'2026-11-15 storage/menu repair; awaits DM32 retest','hardware_tested':False,'program_sha256':digest(binary),'source_archive_sha256':digest(archive),'technical_source_set_sha256':technical_source_hash},indent=2)+'\n')
     print('Prepared',OUT.relative_to(ROOT),'and tracked validation evidence')
 
 

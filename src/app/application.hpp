@@ -5,7 +5,7 @@
 #include <array>
 
 namespace sheets47 {
-enum class Key { None, Up, Down, Left, Right, Enter, Backspace, Exit, Shift, Digit, Character,
+enum class Key { None, Unmapped, Up, Down, Left, Right, Enter, Backspace, Exit, Shift, Digit, Character,
     Add, Subtract, Multiply, Divide, Dot, Sign, Exponent, F1, F2, F3, F4, F5, F6 };
 struct Event { Key key = Key::None; char character = 0; };
 enum class Mode { Worksheet, Editor, Reference, Functions, Alphabet, GoTo, Help, Info, Confirm };
@@ -16,6 +16,7 @@ public:
     bool start();
     bool handle(Event);
     bool save();
+    bool prepare_setup();
     bool suspend();
     void resumed();
     bool dirty() const { return workbook.generation()!=saved_generation_; }
@@ -45,12 +46,13 @@ private:
     Storage& storage_;
     uint32_t saved_generation_=0;
     bool setup_request_=false;
+    bool setup_without_save_=false;
     std::vector<Record> clipboard_;
     Area copied_{};
     Cell edit_cell_{};
     bool has_clipboard_=false;
     Mode alphabet_return_=Mode::Editor;
-    enum class Pending { None, New, Demo, Open, Clear, DeleteRow } pending_=Pending::None;
+    enum class Pending { None, New, Demo, Open, Clear, DeleteRow, Setup } pending_=Pending::None;
     void move(int,int);
     void begin_edit(bool formula=false);
     void append(const std::string&);

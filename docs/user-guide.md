@@ -11,6 +11,11 @@ Program: `sheets47.pg5`. Version: `0.1.0`. Own saved workbook, viewport, and cel
 format information live under `/SHEETS47` at the calculator disk root. There is
 no separate QSPI resource package and no C47/R47 runtime dependency.
 
+The current `.pg5` header explicitly requires the **DM32** system keymap
+(`0x32334d44`), matching the native DM32 application. It no longer accepts any
+keymap via a wildcard. The project also targets DM42n, but this packaged build
+is prepared for DM32. The change does not replace the device's installed keymap.
+
 Use the supported DMCP5 program-loading procedure after backing up the device
 and retaining the normal calculator program and a known restoration procedure.
 Check that the installed firmware satisfies interface 3.17. No tool in this
@@ -104,12 +109,20 @@ draft. Cursor-only activity does not trigger an automatic disk write.
 The app sleeps while idle and refreshes only changed LCD rows after user-visible
 changes, with a full restoration on wake or return from a platform menu.
 
-FILE → SETUP or SHIFT+0 opens the platform settings path after saving dirty work.
-Finish or cancel an edit first. All file handles are closed before USB disk or
-system menus; no background writes occur while those synchronous menus run.
+FILE → SETUP or SHIFT+0 opens the platform settings path after attempting to save
+dirty work. If saving fails, CONTINUE opens settings without saving; CANCEL
+returns to the worksheet. SETUP/USB can reset the app, so continuing can lose
+unsaved data. Finish or cancel an edit first. All file handles are closed before
+USB disk or system menus; no background writes occur while those menus run.
+Write access is enabled only for directory creation and file writes, then the
+previous firmware protection is restored. Failures identify the operation and
+firmware error code. Unmapped key presses clear SHIFT and display their key code;
+use FILE → SETUP and record that code if the keyboard shortcut still fails.
 Leaving for the usual calculator program uses the DMCP platform procedures.
 A clean-reset startup skips automatic loading and lets FILE → OPEN restore work.
 
-The physical power, USB, keymap, and filesystem behavior must still be tested on
-each supported device/firmware combination. Battery savings are a design goal
+The initial DM32 user test confirmed the worksheet/demo but found storage/menu
+failures; the [repair and retest notes](changes/0.1.0-storage-menu-fix.md) describe
+the replacement build. Physical power, USB, keymap, and filesystem behavior must
+still be verified on each device/firmware combination. Battery savings are a design goal
 supported by sleep/refresh behavior, not a measured battery-life claim.

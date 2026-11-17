@@ -1,5 +1,10 @@
 # sheets47 0.1.0 validation
 
+**Historical initial-build record.** For subsequent repairs, see the
+[storage/menu notes](changes/0.1.0-storage-menu-fix.md) and the
+[16 November DM32-header verification](validation/2026-11-16-dm32-header.json).
+The artifact size, hash, and test count below identify the original build.
+
 Recorded 14 November 2026. This is the first implementation on `dev`.
 **Status: host-tested and cross-linked; no calculator hardware test has been performed.**
 

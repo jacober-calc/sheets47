@@ -59,7 +59,7 @@ uint32_t crc32(const uint8_t* data,size_t size){
 bool Storage::fail(const char* error){std::snprintf(error_,sizeof error_,"%s",error);return false;}
 bool Storage::save(const Workbook& workbook,const ViewState& view){
     try{
-        if(!files_.prepare())return fail("Storage unavailable; worksheet is still unsaved");
+        if(!files_.prepare())return fail(files_.error()?files_.error():"Storage unavailable; worksheet is still unsaved");
         bool found=false,io_error=false;
         auto a=head_generation(files_,"HEAD0.S47",found,io_error),b=head_generation(files_,"HEAD1.S47",found,io_error);
         if(io_error)return fail("Cannot read save headers; save aborted");
@@ -82,7 +82,7 @@ bool Storage::save(const Workbook& workbook,const ViewState& view){
         }
         if(!available)return fail("No free save generation; old files retained");
         auto data=encode(workbook,view,n);
-        if(!files_.write(file_name(n),data,true))return fail("Workbook write/close failed; prior save retained");
+        if(!files_.write(file_name(n),data,true))return fail(files_.error()?files_.error():"Workbook write/close failed; prior save retained");
         Bytes verified;
         if(files_.read(file_name(n),verified,MaxFile)!=ReadResult::Ok||verified!=data)return fail("Save verification failed; prior save retained");
         Bytes head{'S','4','7','H'};u32(head,n);checksum(head);
@@ -90,7 +90,7 @@ bool Storage::save(const Workbook& workbook,const ViewState& view){
         // Preserve whichever pointer identifies the newest valid prior save.
         if(valid_a&&(!valid_b||a>b))target="HEAD1.S47";
         else if(valid_b)target="HEAD0.S47";
-        if(!files_.write(target,head,false))return fail("Save header failed; prior save retained");
+        if(!files_.write(target,head,false))return fail(files_.error()?files_.error():"Save header failed; prior save retained");
         Bytes verified_head;
         if(files_.read(target,verified_head,64)!=ReadResult::Ok||verified_head!=head)return fail("Save header verification failed");
         generation_=n;error_[0]=0;return true;
@@ -99,7 +99,7 @@ bool Storage::save(const Workbook& workbook,const ViewState& view){
 }
 LoadResult Storage::load(Workbook& workbook,ViewState& view){
     try{
-        if(!files_.prepare()){fail("Storage unavailable");return LoadResult::Failed;}
+        if(!files_.prepare()){fail(files_.error()?files_.error():"Storage unavailable");return LoadResult::Failed;}
         bool found=false,io_error=false;
         std::array<uint32_t,2> versions{head_generation(files_,"HEAD0.S47",found,io_error),head_generation(files_,"HEAD1.S47",found,io_error)};
         if(versions[0]<versions[1])std::swap(versions[0],versions[1]);

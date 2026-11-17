@@ -230,10 +230,11 @@ static int repl(const std::string& root){
     }
     return 0;
 }
+unsigned dmcp5_tests();
 int main(int argc,char** argv){
     std::set_terminate([](){fail_after=-1;c_fail_after=-1;void* frames[64];int n=backtrace(frames,64);backtrace_symbols_fd(frames,n,2);std::_Exit(2);});
     if(argc>=2&&std::string(argv[1])=="--repl")return repl(argc>=3?argv[2]:"build/host/SHEETS47");
-    auto start=std::chrono::steady_clock::now();formulas();edits();capacity();auto failures=allocation_failures();auto c_failures=c_allocation_failures();storage();application();
+    auto start=std::chrono::steady_clock::now();formulas();edits();capacity();auto failures=allocation_failures();auto c_failures=c_allocation_failures();storage();application();checks+=dmcp5_tests();
     double ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
     std::ofstream report(output("validation.json"));
     report<<"{\n  \"checks\": "<<checks<<",\n  \"allocation_failure_points\": "<<failures<<",\n  \"c_allocation_failure_points\": "<<c_failures<<",\n  \"host_test_ms\": "<<ms<<",\n  \"host_cpp_peak_live_bytes\": "<<peak_bytes<<",\n  \"note\": \"Host only; peak-byte instrumentation excludes direct libc allocations and target heap/stack. C fault injection wraps project malloc/realloc calls, not hidden calls inside precompiled shared libraries.\"\n}\n";
